@@ -1,0 +1,93 @@
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 6vw 5rem; overflow: hidden;
+}
+
+.particle-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+.hero-glow {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+  filter: blur(60px); top: 50%; left: 50%; transform: translate(-50%, -60%);
+  pointer-events: none; z-index: 1;
+  animation: pulse 6s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.6;transform:translate(-50%,-60%) scale(1)} 50%{opacity:1;transform:translate(-50%,-60%) scale(1.2)} }
+
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+}
+
+.hero-inner { position: relative; z-index: 2; max-width: 780px; width: 100%; }
+
+/* Logo in hero */
+.hero-logo-wrap {
+  display: flex; justify-content: center; margin-bottom: 1.5rem;
+  animation: fu .7s ease both;
+}
+.hero-logo {
+  width: 72px; height: 72px; object-fit: contain; border-radius: 18px;
+  filter: drop-shadow(0 0 24px var(--blue-glow)) drop-shadow(0 0 8px var(--blue-glow));
+  animation: logoFloat 4s ease-in-out infinite;
+}
+@keyframes logoFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--blue-glow); border: 1px solid var(--border);
+  color: var(--blue); padding: .38rem 1rem;
+  border-radius: 100px; font-size: .75rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 1.8rem; animation: fu .7s .1s ease both;
+}
+.bdot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+
+.hero-title {
+  font-size: clamp(2.8rem, 7.5vw, 6rem); font-weight: 900;
+  line-height: 1.0; letter-spacing: -.04em; margin-bottom: 1.5rem;
+  animation: fu .7s .15s ease both; color: var(--white);
+  min-height: 2.15em;
+}
+
+.tw { color: var(--blue); display: block; }
+.caret {
+  color: var(--blue); animation: cb .9s step-end infinite; margin-left: 2px;
+  filter: drop-shadow(0 0 5px var(--blue));
+}
+@keyframes cb { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.hero-sub {
+  font-size: clamp(.95rem, 1.8vw, 1.08rem); color: var(--muted);
+  max-width: 520px; margin: 0 auto 2.8rem; line-height: 1.85;
+  animation: fu .7s .25s ease both;
+}
+
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fu .7s .35s ease both; }
+
+.hero-stats {
+  display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+  margin-top: 4.5rem; padding-top: 3rem;
+  border-top: 1px solid var(--border);
+  animation: fu .7s .5s ease both;
+}
+.stat { text-align: center; }
+.stat-n { font-size: 1.9rem; font-weight: 800; letter-spacing: -.03em; color: var(--blue); }
+.stat-l { font-size: .68rem; color: var(--muted2); letter-spacing: .1em; text-transform: uppercase; margin-top: .25rem; }
+
+@keyframes fu { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+@media (max-width: 600px) {
+  .hero { padding-top: 7rem; }
+  .hero-logo { width: 60px; height: 60px; }
+  .hero-badge { margin-bottom: 1.2rem; font-size: 0.65rem; }
+  .hero-title { min-height: 2.15em; margin-bottom: 1rem; }
+  .hero-sub { margin-bottom: 2rem; font-size: 0.9rem; }
+  .hero-stats { gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; }
+  .stat-n { font-size: 1.5rem; }
+}

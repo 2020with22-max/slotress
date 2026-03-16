@@ -1,0 +1,28 @@
+.srv-section { background: var(--bg2); }
+.srv-head { max-width: 560px; margin-bottom: 3.5rem; }
+
+.srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+
+.srv-card {
+  background: var(--bg2); padding: 2.2rem;
+  position: relative; overflow: hidden;
+  transition: background .25s;
+}
+.srv-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:transparent; transition:background .3s; }
+.srv-card:hover { background: var(--bg3); }
+.srv-card:hover::before { background: var(--blue); }
+.srv-card.hot::before { background: var(--blue); }
+
+.srv-icon {
+  width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1.3rem; background: var(--bg3); border: 1px solid var(--border2);
+  color: var(--blue);
+}
+.srv-card.hot .srv-icon { background: var(--blue-glow); border-color: var(--blue); }
+
+.srv-card h3 { font-size: 1rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .6rem; color: var(--white); }
+.srv-card p  { font-size: .87rem; color: var(--muted); line-height: 1.75; }
+
+.srv-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1.4rem; }
+.srv-tag { font-size: .67rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--muted2); border: 1px solid var(--border); padding: .2rem .7rem; border-radius: 100px; }
+.srv-popular { font-size: .72rem; font-weight: 700; color: var(--blue); letter-spacing: .03em; }
